@@ -1,0 +1,112 @@
+.error {
+     color: red;
+     font-size:80%
+}
+.needcorrection {
+     color: red;
+}
+body{
+	background-image: url('/images/fondo.jpg');
+}
+.center {
+     text-align: center;
+}
+
+img {
+     width: 40px;
+     height: 30px;
+}
+
+.imagen {
+    width: 200px;
+    height: 200px;
+}
+
+*{box-sizing : border-box;}
+
+.boton{
+	display:inline-block;
+	width:150px;
+	height:40px;
+	text-align:center;
+	font-size:22px;
+	border:1px solid #2e5fff;
+	border-radius:5px;
+	cursor:pointer;
+	color:white;
+	padding: 5px;
+
+}
+
+.boton:hover{
+	background-color:#2e5fff;}
+
+.reserva{
+	background-image: url('/images/calendar-alt-regular.svg');
+	background-repeat:no-repeat;
+	background-size:20px 20px;
+	background-position:10px 5px;
+	background-color:#2e5fff;
+}
+
+.loggeduser {
+	color: black;
+	text-align: right;
+	margin-right: 10pt;
+}
+
+.main{
+  margin: 150px;
+}
+
+.butt{
+   width:300px;
+}
+
+.butto{
+   width:200px;
+}
+
+.user {
+	font-family: 'SansSerif';
+}
+
+.form {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form input {
+	width: 90%;
+	height: 30px;
+	margin: 0.5rem;
+}
+
+.negrita {
+	font-weight: bold;
+}
+
+input, textarea, select, button {
+	width : 150px;
+	margin: 0;
+
+	-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+	-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+	box-sizing: border-box;
+}
+
+h1{
+	color: #ff8c00;
+}
+
+h2{
+	color: #948D8B;
+}
+
+#ocultar{
+}

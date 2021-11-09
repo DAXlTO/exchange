@@ -57,7 +57,7 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             return "login";
         }
-        user = userDao.loadUserByUsername(user.getNif(), user.getPassword(), userDAO);
+        user = userDao.loadUserByUsername(user.getEmail(), user.getPassword(), userDAO);
         if (user == null) {
             bindingResult.rejectValue("password", "password", "Contraseña incorrecta");
             return "login";

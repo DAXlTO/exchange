@@ -5,7 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import pl.slaska.it.exchange.model.Ciudadano;
+import pl.slaska.it.exchange.model.User;
+
 import javax.sql.DataSource;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,21 +24,21 @@ public class UserDAO {
 
     BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 
-    public void addCiudadano(Ciudadano ciudadano) {
+    public void addCiudadano(User user) {
         jdbcTemplate.update("INSERT INTO Ciudadano VALUES(?,?,?,?,?,?)",
-                ciudadano.getNombre(),ciudadano.getNif(),ciudadano.getEmail(),ciudadano.getResidencia(), LocalDate.now(),passwordEncryptor.encryptPassword(ciudadano.getPassword()));
+                user.getNombre(), user.getNif(), user.getEmail(), user.getResidencia(), LocalDate.now(),passwordEncryptor.encryptPassword(user.getPassword()));
     }
 
-    public void updateCiudadano(Ciudadano ciudadano) {
+    public void updateCiudadano(User user) {
         jdbcTemplate.update("UPDATE Ciudadano SET nombre =?, email =?, residencia =?, fechaRegistro =?, password =? WHERE nif =?",
-                ciudadano.getNombre(),ciudadano.getEmail(),ciudadano.getResidencia(),ciudadano.getFechaRegistro(),ciudadano.getPassword(),ciudadano.getNif());
+                user.getNombre(), user.getEmail(), user.getResidencia(), user.getFechaRegistro(), user.getPassword(), user.getNif());
     }
 
     public void deleteCiudadano(String Nif) {
         jdbcTemplate.update("DELETE FROM Ciudadano WHERE nif =?", Nif);
     }
 
-    public Ciudadano getCiudadano(String Nif) {
+    public User getCiudadano(String Nif) {
         try {
             /*List<Ciudadano> mun = jdbcTemplate.query("SELECT * FROM Ciudadano",
                     new CiudadanoRowMapper());
@@ -55,7 +56,7 @@ public class UserDAO {
         }
     }
 
-    public List<Ciudadano> getCiudadanos(){
+    public List<User> getCiudadanos(){
         try{
             return jdbcTemplate.query(
                     "SELECT * FROM Ciudadano",

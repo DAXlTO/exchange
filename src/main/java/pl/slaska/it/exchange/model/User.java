@@ -2,7 +2,7 @@ package pl.slaska.it.exchange.model;
 
 import java.time.LocalDate;
 
-public class Ciudadano {
+public class User {
     String nombre;
     String nif;
     String email;
@@ -11,7 +11,7 @@ public class Ciudadano {
     String password;
 
 
-    public Ciudadano(String nombre, String nif, String email, String residencia, LocalDate fechaRegistro, String password) {
+    public User(String nombre, String nif, String email, String residencia, LocalDate fechaRegistro, String password) {
         this.nombre = nombre;
         this.nif = nif;
         this.email = email;
@@ -21,7 +21,7 @@ public class Ciudadano {
 
     }
 
-    public Ciudadano() {
+    public User() {
 
     }
 

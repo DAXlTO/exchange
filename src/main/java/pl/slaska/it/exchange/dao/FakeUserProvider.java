@@ -2,7 +2,7 @@ package pl.slaska.it.exchange.dao;
 
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.stereotype.Repository;
-import pl.slaska.it.exchange.model.Ciudadano;
+import pl.slaska.it.exchange.model.User;
 import pl.slaska.it.exchange.model.UserDetails;
 
 import java.util.*;
@@ -21,15 +21,8 @@ public class FakeUserProvider implements UserDao {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String nif, String password, UserDAO userDAO) {
-        List<Ciudadano> ciudadanos = userDAO.getCiudadanos();
-        for (int i = 0; i < ciudadanos.size(); i++){
-            UserDetails usuario = new UserDetails();
-            usuario.setNif(ciudadanos.get(i).getNif());
-            usuario.setPassword(ciudadanos.get(i).getPassword());
-            knownUsers.put(ciudadanos.get(i).getNif(),usuario);
-        }
-        UserDetails user = knownUsers.get(nif.trim());
+    public UserDetails loadUserByUsername(String email, String password, UserDAO userDAO) {
+        UserDetails user = knownUsers.get(email.trim());
         if (user == null)
             return null;
         BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();

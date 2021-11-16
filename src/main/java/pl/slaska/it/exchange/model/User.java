@@ -1,84 +1,94 @@
 package pl.slaska.it.exchange.model;
 
-import java.time.LocalDate;
-
 public class User {
-    String nombre;
-    String nif;
+
+    String id;
+    int balance;
+    int credit_card;
+    int age;
     String email;
-    String residencia;
-    LocalDate fechaRegistro;
+    String nombre;
     String password;
+    int phone;
 
 
-    public User(String nombre, String nif, String email, String residencia, LocalDate fechaRegistro, String password) {
-        this.nombre = nombre;
-        this.nif = nif;
+
+    public User(String id, int balance, int credit_card, int age, String email, String nombre,  String password, int phone) {
+        this.id = id;
+        this.balance = balance;
+        this.credit_card = credit_card;
+        this.age = age;
         this.email = email;
-        this.residencia = residencia;
-        this.fechaRegistro = fechaRegistro;
+        this.nombre = nombre;
         this.password = password;
-
+        this.phone = phone;
     }
 
     public User() {
 
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getId() {
+        return id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getBalance() {
+        return balance;
     }
 
-    public String getNif() {
-        return nif;
+    public int getCredit_card() {
+        return credit_card;
     }
 
-    public void setNif(String nif) {
-        this.nif = nif;
+    public int getAge() {
+        return age;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void setCredit_card(int credit_card) {
+        this.credit_card = credit_card;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getResidencia() {
-        return residencia;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-    public void setResidencia(String residencia) {
-        this.residencia = residencia;
-    }
-
-    public LocalDate getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(LocalDate fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
-    public String getPassword() { return password; }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "Ciudadano{" +
-                "nombre='" + nombre + '\'' +
-                ", NIF='" + nif + '\'' +
-                ", email='" + email + '\'' +
-                ", residencia='" + residencia + '\'' +
-                ", fechaRegistro=" + fechaRegistro +
-                '}';
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 }

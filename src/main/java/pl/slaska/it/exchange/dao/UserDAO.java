@@ -25,20 +25,20 @@ public class UserDAO {
     BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 
     public void addCiudadano(User user) {
-        jdbcTemplate.update("INSERT INTO Ciudadano VALUES(?,?,?,?,?,?)",
-                user.getNombre(), user.getNif(), user.getEmail(), user.getResidencia(), LocalDate.now(),passwordEncryptor.encryptPassword(user.getPassword()));
+        jdbcTemplate.update("INSERT INTO User VALUES(?,?,?,?,?,?,?,?)",
+                user.getId(), user.getBalance(), user.getCredit_card(), user.getAge(),user.getEmail(), user.getNombre(), LocalDate.now(),passwordEncryptor.encryptPassword(user.getPassword()),user.getPhone());
     }
 
     public void updateCiudadano(User user) {
-        jdbcTemplate.update("UPDATE Ciudadano SET nombre =?, email =?, residencia =?, fechaRegistro =?, password =? WHERE nif =?",
-                user.getNombre(), user.getEmail(), user.getResidencia(), user.getFechaRegistro(), user.getPassword(), user.getNif());
+        jdbcTemplate.update("UPDATE User SET card =?, age =?, password =? WHERE id =?",
+                user.getCredit_card(), user.getAge(),user.getPassword(), user.getId());
     }
 
-    public void deleteCiudadano(String Nif) {
-        jdbcTemplate.update("DELETE FROM Ciudadano WHERE nif =?", Nif);
+    public void deleteCiudadano(String id) {
+        jdbcTemplate.update("DELETE FROM User WHERE id =?", id);
     }
 
-    public User getCiudadano(String Nif) {
+    public User getCiudadano(String id) {
         try {
             /*List<Ciudadano> mun = jdbcTemplate.query("SELECT * FROM Ciudadano",
                     new CiudadanoRowMapper());
@@ -47,8 +47,8 @@ public class UserDAO {
                 System.out.println(mun.get(i).getNif());
             }
              */
-            return jdbcTemplate.queryForObject("SELECT * FROM Ciudadano WHERE nif =?",
-                    new UserRowMapper(), Nif);
+            return jdbcTemplate.queryForObject("SELECT * FROM User WHERE id =?",
+                    new UserRowMapper(), id);
 
         }
         catch(EmptyResultDataAccessException e) {
@@ -59,7 +59,7 @@ public class UserDAO {
     public List<User> getCiudadanos(){
         try{
             return jdbcTemplate.query(
-                    "SELECT * FROM Ciudadano",
+                    "SELECT * FROM User",
                     new UserRowMapper());
         }
         catch(EmptyResultDataAccessException e) {

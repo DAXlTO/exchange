@@ -13,11 +13,12 @@ public final class UserRowMapper implements RowMapper<User> {
         BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 
         User user = new User();
-        user.setNombre(rs.getString("nombre"));
-        user.setNif(rs.getString("nif"));
+        user.setId(rs.getString("id"));
+        user.setBalance(rs.getInt("balance"));
+        user.setCredit_card(rs.getInt("card"));
+        user.setAge(rs.getInt("age"));
         user.setEmail(rs.getString("email"));
-        user.setResidencia(rs.getString("residencia"));
-        user.setFechaRegistro(rs.getObject("fechaRegistro", LocalDate.class));
+        user.setNombre(rs.getString("nombre"));
         user.setPassword(rs.getString("password"));
         return user;
     }

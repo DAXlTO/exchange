@@ -25,17 +25,17 @@ public class UserDAO {
     BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 
     public void addCiudadano(User user) {
-        jdbcTemplate.update("INSERT INTO User VALUES(?,?,?,?,?,?,?,?)",
+        jdbcTemplate.update("INSERT INTO \"User\" VALUES(?,?,?,?,?,?,?,?)",
                 user.getId(), user.getBalance(), user.getCredit_card(), user.getAge(),user.getEmail(), user.getNombre(), LocalDate.now(),passwordEncryptor.encryptPassword(user.getPassword()),user.getPhone());
     }
 
     public void updateCiudadano(User user) {
-        jdbcTemplate.update("UPDATE User SET card =?, age =?, password =? WHERE id =?",
+        jdbcTemplate.update("UPDATE \"User\" SET card =?, age =?, password =? WHERE id =?",
                 user.getCredit_card(), user.getAge(),user.getPassword(), user.getId());
     }
 
     public void deleteCiudadano(String id) {
-        jdbcTemplate.update("DELETE FROM User WHERE id =?", id);
+        jdbcTemplate.update("DELETE FROM \"User\" WHERE id =?", id);
     }
 
     public User getCiudadano(String id) {
@@ -47,7 +47,7 @@ public class UserDAO {
                 System.out.println(mun.get(i).getNif());
             }
              */
-            return jdbcTemplate.queryForObject("SELECT * FROM User WHERE id =?",
+            return jdbcTemplate.queryForObject("SELECT * FROM \"User\" WHERE id =?",
                     new UserRowMapper(), id);
 
         }
@@ -59,7 +59,7 @@ public class UserDAO {
     public List<User> getCiudadanos(){
         try{
             return jdbcTemplate.query(
-                    "SELECT * FROM User",
+                    "SELECT * FROM \"User\"",
                     new UserRowMapper());
         }
         catch(EmptyResultDataAccessException e) {

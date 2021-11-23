@@ -1,75 +1,93 @@
 package pl.slaska.it.exchange.model;
 
 public class UserDetails {
-    String nif;
+    String id;
+    int balance;
+    int credit_card;
+    int age;
     String email;
+    String nombre;
     String password;
-    String municipio;
-    Integer area;
-    String usuario;
+    int phone;
 
 
-    public String getNif() {
-        return nif;
-    }
 
-    public void setNif(String nif) {
-        this.nif = nif;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
+    public UserDetails(String id, int balance, int credit_card, int age, String email, String nombre,  String password, int phone) {
+        this.id = id;
+        this.balance = balance;
+        this.credit_card = credit_card;
+        this.age = age;
+        this.email = email;
+        this.nombre = nombre;
         this.password = password;
+        this.phone = phone;
+    }
+
+    public UserDetails() {
+
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public int getCredit_card() {
+        return credit_card;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void setCredit_card(int credit_card) {
+        this.credit_card = credit_card;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getMunicipio() {
-        return municipio;
-    }
-
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
-    }
-
-    public String getIdentificador() {
-        return usuario;
-    }
-
-    public void setIdentificador(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public Integer getArea() {
-        return area;
-    }
-
-    public void setArea(Integer area) {
-        this.area = area;
-    }
-
-    @Override
-    public String toString() {
-        return "UserDetails{" +
-                "nif='" + nif + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 }

@@ -1,9 +1,11 @@
 package pl.slaska.it.exchange;
 
+import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
+import pl.slaska.it.exchange.dao.UserDAO;
 
 import javax.sql.DataSource;
 
@@ -11,6 +13,10 @@ import javax.sql.DataSource;
 public class ExchangeApplication {
 
 	public static void main(String[] args) {
+
+		//BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
+		//System.out.println(passwordEncryptor.encryptPassword("admin"));
+
 		SpringApplication.run(ExchangeApplication.class, args);
 	}
 

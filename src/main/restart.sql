@@ -1,6 +1,5 @@
 DROP TABLE "User";
 
-
 CREATE TABLE "User"(
 	id		VARCHAR(9),
 	balance		INTEGER,
@@ -13,3 +12,5 @@ CREATE TABLE "User"(
 
 CONSTRAINT cp_user PRIMARY KEY(id)
 );
+
+INSERT INTO "User" VALUES('12345678N',0,123456789,18,'admin@admin.com','Admin','/rPjddRcrpc7IPtD8oN+QoD/8KrIM7CD',623457698);

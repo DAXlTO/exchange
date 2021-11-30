@@ -33,4 +33,17 @@ CONSTRAINT cp_offer PRIMARY KEY(walletSeller),
 CONSTRAINT ca_usuario FOREIGN KEY(idUsuario) REFERENCES Usuario(id) ON DELETE RESTRICT ON UPDATE CASCADE
 
 );
+
+
+CREATE TABLE Transactions(
+    walletBuyer     VARCHAR(40) NOT NULL,
+    walletSeller    VARCHAR (40) NOT NULL,
+    quantity        INTEGER NOT NULL,
+    trans_date      Date
+
+CONSTRAINT cp_Transactions PRIMARY KEY (walletBuyer, walletSeller)
+);
+
+
+
 INSERT INTO "User" VALUES('12345678N',0,123456789,18,'admin@admin.com','Admin','/rPjddRcrpc7IPtD8oN+QoD/8KrIM7CD',623457698);

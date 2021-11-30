@@ -5,8 +5,14 @@
 .needcorrection {
      color: red;
 }
+.mainPage{
+       margin-top: 250px;
+}
+.gif{
+  width: 75px; height: 75px;
+}
 body{
-	background-image: url('/images/fondo.jpg');
+	background-image: url('/images/fondo1.png');
 }
 .center {
      text-align: center;

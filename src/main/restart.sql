@@ -22,12 +22,13 @@ CONSTRAINT ca_users FOREIGN KEY(idUser) REFERENCES Users(id) ON DELETE RESTRICT 
 );
 
 CREATE TABLE Offers(
+    idOffer         INTEGER,
     walletSeller    VARCHAR(40),
     quantity        INTEGER,
     dateOffer       DATE NOT NULL,
     idUser          VARCHAR(9),
 
-CONSTRAINT cp_offer PRIMARY KEY(walletSeller),
+CONSTRAINT cp_offer PRIMARY KEY(walletSeller, idOffer),
 CONSTRAINT ca_users FOREIGN KEY(idUser) REFERENCES Users(id) ON DELETE RESTRICT ON UPDATE CASCADE
 
 );

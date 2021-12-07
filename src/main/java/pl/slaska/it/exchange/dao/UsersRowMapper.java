@@ -14,7 +14,7 @@ public final class UsersRowMapper implements RowMapper<Users> {
         Users users = new Users();
         users.setId(rs.getString("id"));
         users.setBalance(rs.getInt("balance"));
-        users.setCredit_card(rs.getInt("card"));
+        users.setCredit_card(rs.getInt("credit_card"));
         users.setAge(rs.getInt("age"));
         users.setEmail(rs.getString("email"));
         users.setNombre(rs.getString("nombre"));

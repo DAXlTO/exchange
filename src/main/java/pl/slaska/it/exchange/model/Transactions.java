@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Transactions {
 
+    int
     String walletBuyer;
     String walletSeller;
     int quantity;
@@ -15,6 +16,8 @@ public class Transactions {
         this.quantity = quantity;
         this.trans_date = trans_date;
     }
+
+    public Transactions(){}
 
     public String getWalletBuyer() {
         return walletBuyer;

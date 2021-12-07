@@ -18,6 +18,8 @@ public class Offers {
         this.idUser = idUser;
     }
 
+    public Offers(){}
+
     public int getIdOffer() {
         return idOffer;
     }

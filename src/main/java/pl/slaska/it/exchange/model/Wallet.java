@@ -12,6 +12,8 @@ public class Wallet {
         this.idUser = idUser;
     }
 
+    public Wallet(){}
+
     public String getIdWallet() {
         return idWallet;
     }

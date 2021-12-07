@@ -1,6 +1,6 @@
 package pl.slaska.it.exchange.model;
 
-public class User {
+public class Users {
 
     String id;
     int balance;
@@ -13,7 +13,7 @@ public class User {
 
 
 
-    public User(String id, int balance, int credit_card, int age, String email, String nombre,  String password, int phone) {
+    public Users(String id, int balance, int credit_card, int age, String email, String nombre, String password, int phone) {
         this.id = id;
         this.balance = balance;
         this.credit_card = credit_card;
@@ -24,7 +24,7 @@ public class User {
         this.phone = phone;
     }
 
-    public User() {
+    public Users() {
 
     }
 

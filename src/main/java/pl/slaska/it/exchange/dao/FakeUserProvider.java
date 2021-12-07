@@ -2,7 +2,6 @@ package pl.slaska.it.exchange.dao;
 
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.stereotype.Repository;
-import pl.slaska.it.exchange.model.User;
 import pl.slaska.it.exchange.model.UserDetails;
 
 import java.util.*;
@@ -21,7 +20,7 @@ public class FakeUserProvider implements UserDao {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email, String password, UserDAO userDAO) {
+    public UserDetails loadUserByUsername(String email, String password, UsersDAO usersDAO) {
         UserDetails user = knownUsers.get(email.trim());
         if (user == null)
             return null;

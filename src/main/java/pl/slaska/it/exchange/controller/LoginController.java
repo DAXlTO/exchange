@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import pl.slaska.it.exchange.dao.UserDAO;
+import pl.slaska.it.exchange.dao.UsersDAO;
 import pl.slaska.it.exchange.dao.UserDao;
 import pl.slaska.it.exchange.model.UserDetails;
 
@@ -33,10 +33,10 @@ public class LoginController {
 
     @Autowired
     private UserDao userDao;
-    private UserDAO userDAO;
+    private UsersDAO usersDAO;
 
     @Autowired
-    public void setCiudadanoDAO(UserDAO userDAO) { this.userDAO = userDAO; }
+    public void setCiudadanoDAO(UsersDAO usersDAO) { this.usersDAO = usersDAO; }
 
 
     /**
@@ -57,7 +57,7 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             return "login";
         }
-        user = userDao.loadUserByUsername(user.getEmail(), user.getPassword(), userDAO);
+        user = userDao.loadUserByUsername(user.getEmail(), user.getPassword(), usersDAO);
         if (user == null) {
             bindingResult.rejectValue("password", "password", "Contraseña incorrecta");
             return "login";

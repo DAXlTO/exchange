@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import pl.slaska.it.exchange.model.User;
+import pl.slaska.it.exchange.model.Users;
 
 import javax.sql.DataSource;
 import java.time.LocalDate;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserDAO {
+public class UsersDAO {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -24,21 +24,21 @@ public class UserDAO {
 
     BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 
-    public void addCiudadano(User user) {
+    public void addCiudadano(Users users) {
         jdbcTemplate.update("INSERT INTO \"User\" VALUES(?,?,?,?,?,?,?,?)",
-                user.getId(), user.getBalance(), user.getCredit_card(), user.getAge(),user.getEmail(), user.getNombre(), LocalDate.now(),passwordEncryptor.encryptPassword(user.getPassword()),user.getPhone());
+                users.getId(), users.getBalance(), users.getCredit_card(), users.getAge(), users.getEmail(), users.getNombre(), LocalDate.now(),passwordEncryptor.encryptPassword(users.getPassword()), users.getPhone());
     }
 
-    public void updateCiudadano(User user) {
+    public void updateCiudadano(Users users) {
         jdbcTemplate.update("UPDATE \"User\" SET card =?, age =?, password =? WHERE id =?",
-                user.getCredit_card(), user.getAge(),user.getPassword(), user.getId());
+                users.getCredit_card(), users.getAge(), users.getPassword(), users.getId());
     }
 
     public void deleteCiudadano(String id) {
         jdbcTemplate.update("DELETE FROM \"User\" WHERE id =?", id);
     }
 
-    public User getCiudadano(String id) {
+    public Users getCiudadano(String id) {
         try {
             /*List<Ciudadano> mun = jdbcTemplate.query("SELECT * FROM Ciudadano",
                     new CiudadanoRowMapper());
@@ -48,7 +48,7 @@ public class UserDAO {
             }
              */
             return jdbcTemplate.queryForObject("SELECT * FROM \"User\" WHERE id =?",
-                    new UserRowMapper(), id);
+                    new UsersRowMapper(), id);
 
         }
         catch(EmptyResultDataAccessException e) {
@@ -56,11 +56,11 @@ public class UserDAO {
         }
     }
 
-    public List<User> getCiudadanos(){
+    public List<Users> getCiudadanos(){
         try{
             return jdbcTemplate.query(
                     "SELECT * FROM \"User\"",
-                    new UserRowMapper());
+                    new UsersRowMapper());
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<>();

@@ -7,19 +7,19 @@ public class Users {
     int credit_card;
     int age;
     String email;
-    String nombre;
+    String name;
     String password;
     int phone;
 
 
 
-    public Users(String id, int balance, int credit_card, int age, String email, String nombre, String password, int phone) {
+    public Users(String id, int balance, int credit_card, int age, String email, String name, String password, int phone) {
         this.id = id;
         this.balance = balance;
         this.credit_card = credit_card;
         this.age = age;
         this.email = email;
-        this.nombre = nombre;
+        this.name = name;
         this.password = password;
         this.phone = phone;
     }
@@ -48,8 +48,8 @@ public class Users {
         return email;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
     public String getPassword() {
@@ -80,8 +80,8 @@ public class Users {
         this.email = email;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String nombre) {
+        this.name = nombre;
     }
 
     public void setPassword(String password) {

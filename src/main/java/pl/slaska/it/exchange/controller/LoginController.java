@@ -45,12 +45,12 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String login(Model model) {
-        model.addAttribute("user", new UserDetails());
+        model.addAttribute("users", new UserDetails());
         return "login";
     }
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String checkLogin(@ModelAttribute("user") UserDetails user,
+    public String checkLogin(@ModelAttribute("users") UserDetails user,
                              BindingResult bindingResult, HttpSession session) {
         UserValidator userValidator = new UserValidator();
         userValidator.validate(user, bindingResult);
@@ -63,7 +63,7 @@ public class LoginController {
             return "login";
         }
         session.setAttribute("user", user);
-        return "redirect:/user/ciudadano";
+        return "redirect:/users/home";
     }
 
 

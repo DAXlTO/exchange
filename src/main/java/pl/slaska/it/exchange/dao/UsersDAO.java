@@ -25,8 +25,8 @@ public class UsersDAO {
     BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 
     public void addCiudadano(Users users) {
-        jdbcTemplate.update("INSERT INTO \"User\" VALUES(?,?,?,?,?,?,?,?)",
-                users.getId(), users.getBalance(), users.getCredit_card(), users.getAge(), users.getEmail(), users.getNombre(), LocalDate.now(),passwordEncryptor.encryptPassword(users.getPassword()), users.getPhone());
+        jdbcTemplate.update("INSERT INTO Users VALUES(?,?,?,?,?,?,?,?)",
+                users.getId(), users.getBalance(), users.getCredit_card(), users.getAge(), users.getEmail(), users.getName(),passwordEncryptor.encryptPassword(users.getPassword()), users.getPhone());
     }
 
     public void updateCiudadano(Users users) {

@@ -63,7 +63,7 @@ public class LoginController {
             return "login";
         }
         session.setAttribute("user", user);
-        return "redirect:/users/home";
+        return "redirect:/users/add";
     }
 
 

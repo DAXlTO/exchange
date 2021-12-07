@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
 <html xmlns:th="http://www.thymeleaf.org">
-
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <title>Sing up</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/estilos.css" th:href="@{/css/estilos.css}"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans&display=swap" rel="stylesheet">
-    <title>Home</title>
 </head>
-<body>
+<body class="center">
+<h2 class="negrita">Sing up</h2>
+<div class="center" >
+    <form class="form" action="#" th:action="@{/users/add}"
+          th:object="${users}" method="post">
+        <table>
+            <tr>
+                <td><label>ID</label></td>
+                <td><input type="text" th:field="*{id}" required></td>
+            </tr>
+            <tr>
+                <td><label>Credit Card</label></td>
+                <td><input type="text" th:field="*{credit_card}" /></td>
+            </tr>
+            <tr>
+                <td><label>Age</label></td>
+                <td><input type="text" th:field="*{age}" required></td>
+                <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error"></td>
 
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="text" th:field="*{email}" placeholder="...@..."/></td>
+            </tr>
+            <tr>
+                <td><label>Name</label></td>
+                <td><input type="text" th:field="*{name}" maxlength="50" required></td>
+            </tr>
+            <tr>
+                <td><label>Contraseña</label></td>
+                <td><input type="password" th:field="*{password}" maxlength="100" required></td>
+            </tr>
+            <tr>
+                <td><label>Phone</label></td>
+                <td><input type="text" th:field="*{phone}" maxlength="100" required></td>
+            </tr>
+
+
+        </table>
+        <button type="submit" class="btn btn-success">Registrarse</button></a>
+    </form>
+</div>
 </body>
 </html>

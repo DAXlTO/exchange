@@ -36,7 +36,7 @@ public class LoginController {
     private UsersDAO usersDAO;
 
     @Autowired
-    public void setCiudadanoDAO(UsersDAO usersDAO) { this.usersDAO = usersDAO; }
+    public void setUsersDAO(UsersDAO usersDAO) { this.usersDAO = usersDAO; }
 
 
     /**

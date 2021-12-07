@@ -56,10 +56,10 @@ public class UsersDAO {
         }
     }
 
-    public List<Users> getCiudadanos(){
+    public List<Users> getUsers(){
         try{
             return jdbcTemplate.query(
-                    "SELECT * FROM \"User\"",
+                    "SELECT * FROM Users",
                     new UsersRowMapper());
         }
         catch(EmptyResultDataAccessException e) {

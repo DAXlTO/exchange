@@ -4,13 +4,14 @@ import java.time.LocalDate;
 
 public class Transactions {
 
-    int
+    int idTransactions;
     String walletBuyer;
     String walletSeller;
     int quantity;
     LocalDate trans_date;
 
-    public Transactions(String walletBuyer, String walletSeller, int quantity, LocalDate trans_date) {
+    public Transactions(int idTransactions, String walletBuyer, String walletSeller, int quantity, LocalDate trans_date) {
+        this.idTransactions = idTransactions;
         this.walletBuyer = walletBuyer;
         this.walletSeller = walletSeller;
         this.quantity = quantity;
@@ -18,6 +19,10 @@ public class Transactions {
     }
 
     public Transactions(){}
+
+    public int getIdTransactions() {
+        return idTransactions;
+    }
 
     public String getWalletBuyer() {
         return walletBuyer;
@@ -33,6 +38,10 @@ public class Transactions {
 
     public LocalDate getTrans_date() {
         return trans_date;
+    }
+
+    public void setIdTransactions(int idTransactions) {
+        this.idTransactions = idTransactions;
     }
 
     public void setWalletBuyer(String walletBuyer) {

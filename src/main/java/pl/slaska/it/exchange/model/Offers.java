@@ -5,14 +5,13 @@ import java.time.LocalDate;
 public class Offers {
 
     int idOffer;
-    String walletSeller;
     int quantity;
     LocalDate dateOffer;
     String idUser;
 
-    public Offers(int idOffer, String walletSeller, int quantity, LocalDate dateOffer, String idUser) {
+    public Offers(int idOffer, int quantity, LocalDate dateOffer, String idUser) {
         this.idOffer = idOffer;
-        this.walletSeller = walletSeller;
+
         this.quantity = quantity;
         this.dateOffer = dateOffer;
         this.idUser = idUser;
@@ -24,9 +23,7 @@ public class Offers {
         return idOffer;
     }
 
-    public String getWalletSeller() {
-        return walletSeller;
-    }
+
 
     public int getQuantity() {
         return quantity;
@@ -44,9 +41,6 @@ public class Offers {
         this.idOffer = idOffer;
     }
 
-    public void setWalletSeller(String walletSeller) {
-        this.walletSeller = walletSeller;
-    }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;

@@ -25,8 +25,16 @@ public class FakeUserProvider implements UserDao {
         List<Users> users = usersDAO.getUsers();
         for(int i = 0; i < users.size(); i++){
             UserDetails user = new UserDetails();
+
+            user.setId(users.get(i).getId());
+            user.setBalance(users.get(i).getBalance());
+            user.setCredit_card(users.get(i).getCredit_card());
+            user.setAge(users.get(i).getAge());
             user.setEmail(users.get(i).getEmail());
+            user.setNombre(users.get(i).getName());
             user.setPassword(users.get(i).getPassword());
+            user.setPhone(users.get(i).getPhone());
+
             knownUsers.put(users.get(i).getEmail(),user);
         }
         UserDetails user = knownUsers.get(email.trim());

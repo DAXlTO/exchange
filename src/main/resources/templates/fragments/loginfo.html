@@ -3,7 +3,16 @@
     No autenticat <a href="/login" th:href="@{/login}">Entrar</a>
   </p>
   <p th:unless="*{user == null}">
-    <span th:text="*{user.nif}"></span>
+
+    <span th:text="*{user.id}"></span>
+    <span th:text="*{user.balance}"></span>
+    <span th:text="*{user.credit_card}"></span>
+    <span th:text="*{user.age}"></span>
+    <span th:text="*{user.email}"></span>
+    <span th:text="*{user.name}"></span>
+    <span th:text="*{user.phone}"></span>
+
     <a href="/logout" th:href="@{/logout}">Cerrar sesión</a>
+
   </p>
 </div>

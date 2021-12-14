@@ -47,7 +47,7 @@ public class UserDetails {
         return email;
     }
 
-    public String getNombre() {
+    public String getName() {
         return nombre;
     }
 

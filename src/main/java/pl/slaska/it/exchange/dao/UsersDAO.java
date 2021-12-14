@@ -40,16 +40,8 @@ public class UsersDAO {
 
     public Users getCiudadano(String id) {
         try {
-            /*List<Ciudadano> mun = jdbcTemplate.query("SELECT * FROM Ciudadano",
-                    new CiudadanoRowMapper());
-
-            for (int i = 0; i < mun.size(); i++){
-                System.out.println(mun.get(i).getNif());
-            }
-             */
             return jdbcTemplate.queryForObject("SELECT * FROM \"User\" WHERE id =?",
                     new UsersRowMapper(), id);
-
         }
         catch(EmptyResultDataAccessException e) {
             return null;

@@ -12,6 +12,7 @@ public final class UsersRowMapper implements RowMapper<Users> {
         BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 
         Users users = new Users();
+
         users.setId(rs.getString("id"));
         users.setBalance(0);
         users.setCredit_card(rs.getInt("credit_card"));
@@ -19,7 +20,7 @@ public final class UsersRowMapper implements RowMapper<Users> {
         users.setEmail(rs.getString("email"));
         users.setName(rs.getString("name"));
         users.setPassword(rs.getString("password"));
-        users.setCredit_card(rs.getInt("phone"));
+        users.setPhone(rs.getInt("phone"));
         return users;
     }
 }

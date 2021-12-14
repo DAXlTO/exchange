@@ -1,7 +1,6 @@
 package pl.slaska.it.exchange.controller;
 
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.slaska.it.exchange.dao.UsersDAO;
+import pl.slaska.it.exchange.model.UserDetails;
 import pl.slaska.it.exchange.model.Users;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/users")
@@ -41,6 +43,17 @@ public class UsersController {
             throw new DuplciatedKeyException("Ya existe el NIF " + users.getId(),"CPduplicada");
         }
         return "/login";
+    }
+
+    @RequestMapping(value = "/home")
+    public String listSocis(HttpSession session, Model model) {
+        if (session.getAttribute("user") == null) {
+            UserDetails a= new UserDetails();
+            model.addAttribute("user", a);
+            return "login";
+        }
+        model.addAttribute("user", session.getAttribute("user"));
+        return "users/home";
     }
 
 }

@@ -63,7 +63,7 @@ public class LoginController {
             return "login";
         }
         session.setAttribute("user", user);
-        return "redirect:/users/add";
+        return "redirect:/users/home";
     }
 
 
@@ -74,6 +74,6 @@ public class LoginController {
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/user/ciudadano";
+        return "redirect:/login";
     }
 }

@@ -3,7 +3,7 @@ package pl.slaska.it.exchange.model;
 public class UserDetails {
     String id;
     int balance;
-    int credit_card;
+    long credit_card;
     int age;
     String email;
     String nombre;
@@ -12,7 +12,7 @@ public class UserDetails {
 
 
 
-    public UserDetails(String id, int balance, int credit_card, int age, String email, String nombre,  String password, int phone) {
+    public UserDetails(String id, int balance, long credit_card, int age, String email, String nombre,  String password, int phone) {
         this.id = id;
         this.balance = balance;
         this.credit_card = credit_card;
@@ -35,7 +35,7 @@ public class UserDetails {
         return balance;
     }
 
-    public int getCredit_card() {
+    public long getCredit_card() {
         return credit_card;
     }
 
@@ -67,7 +67,7 @@ public class UserDetails {
         this.balance = balance;
     }
 
-    public void setCredit_card(int credit_card) {
+    public void setCredit_card(long credit_card) {
         this.credit_card = credit_card;
     }
 

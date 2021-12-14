@@ -4,7 +4,7 @@ public class Users {
 
     String id;
     int balance;
-    int credit_card;
+    long credit_card;
     int age;
     String email;
     String name;
@@ -13,7 +13,7 @@ public class Users {
 
 
 
-    public Users(String id, int balance, int credit_card, int age, String email, String name, String password, int phone) {
+    public Users(String id, int balance, long credit_card, int age, String email, String name, String password, int phone) {
         this.id = id;
         this.balance = balance;
         this.credit_card = credit_card;
@@ -36,7 +36,7 @@ public class Users {
         return balance;
     }
 
-    public int getCredit_card() {
+    public long getCredit_card() {
         return credit_card;
     }
 
@@ -68,7 +68,7 @@ public class Users {
         this.balance = balance;
     }
 
-    public void setCredit_card(int credit_card) {
+    public void setCredit_card(long credit_card) {
         this.credit_card = credit_card;
     }
 

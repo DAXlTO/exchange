@@ -40,7 +40,8 @@ public class UsersController {
             usersDAO.addCiudadano(users);
         }
         catch (DuplicateKeyException e ){
-            throw new DuplciatedKeyException("Ya existe el NIF " + users.getId(),"CPduplicada");
+            bindingResult.rejectValue("id","id","ID Duplicated");
+                return "users/add";
         }
         return "/login";
     }

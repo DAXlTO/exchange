@@ -1,7 +1,7 @@
 CREATE TABLE Users(
 	id		VARCHAR(9),
 	balance		INTEGER,
-	credit_card		INTEGER NOT NULL,
+	credit_card		BIGINT NOT NULL,
 	age		INTEGER NOT NULL CHECK (age > 17),
 	email		VARCHAR(50) NOT NULL,
 	name		VARCHAR(50) NOT NULL,

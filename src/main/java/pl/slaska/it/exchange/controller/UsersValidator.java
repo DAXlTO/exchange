@@ -16,11 +16,15 @@ public class UsersValidator implements Validator {
 
         if(users.getId().length() != 9)errors.rejectValue("id","invalid",
                 "ID invalid");
-        if(users.getCredit_card() < 100000000)errors.rejectValue("credit_card","invalid",
-                "Credit Card invalid");
+
+        String credit = String.valueOf(users.getCredit_card());
+       if(credit.length() != 16)errors.rejectValue("credit_card","invalid",
+             "Credit Card invalid");
+
         if(users.getAge()<18) errors.rejectValue("age","invalid",
                 "You are not of age");
-
+    }
+    public void invalidID(Object o, Errors errors){
 
     }
 }

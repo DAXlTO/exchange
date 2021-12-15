@@ -9,10 +9,7 @@ import pl.slaska.it.exchange.model.Users;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
-import org.bitcoinj.core.Address;
-import org.bitcoinj.core.DumpedPrivateKey;
-import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.NetworkParameters;
+
 
 @Repository
 public class UsersDAO {
@@ -62,13 +59,3 @@ public class UsersDAO {
         }
     }
 }
-
-public class GeneratePrivateKey {
-    public static void main(String[] args) {
-        for (int i=0; i<10000; i++) {
-            ECKey key = new ECKey();
-            DumpedPrivateKey privKey = key.getPrivateKeyEncoded(NetworkParameters.prodNet());
-            System.out.println("private key: " + privKey.toBase58());
-            Address pubAddress = new Address(NetworkParameters.prodNet(), key.getPubKeyHash());
-            System.out.println("public key: " + pubAddress.toBase58());
-            System.out.println("--------------------------------"); } } }

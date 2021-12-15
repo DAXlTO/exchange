@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
+    <title>Profile</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/css/estilos.css" th:href="@{/css/estilos.css}"/>
@@ -10,9 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 </head>
-<body class="center">
+<body>
 <div class="user" th:replace="fragments/loginfo" >...</div>
 
-
+<center>
+    <h1>About me</h1>
+    <p>ID Card: <span th:text="*{user.id}"></span> <br>
+    Balance: <span th:text="*{user.balance}"></span>$<br>
+    Credit card: <span th:text="*{user.credit_card}"></span><br>
+    Age: <span th:text="*{user.age}"></span><br>
+    E-mail: <span th:text="*{user.email}"></span><br>
+    Name: <span th:text="*{user.name}"></span><br>
+    Phone: <span th:text="*{user.phone}"></span><br>
+    </p>
+    <a th:href="@{/users/update/{id}(id=${user.id})}"><button type="button" class="btn btn-warning">Update profile</button></a>
+    <a href="/users/home"><button type="button" class="btn btn-secondary">Return</button></a>
+</center>
 </body>
 </html>

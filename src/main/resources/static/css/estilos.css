@@ -5,9 +5,7 @@
 .needcorrection {
      color: red;
 }
-.mainPage{
-       margin-top: 250px;
-}
+
 .gif{
   width: 75px; height: 75px;
 }
@@ -86,6 +84,9 @@ img {
 	justify-content: center;
 	align-items: center;
 }
+.info-per{
+    margin-top: 300px;
+}
 
 .form input {
 	width: 90%;
@@ -109,6 +110,7 @@ input, textarea, select, button {
 h1{
 	color: #ff8c00;
 }
+
 
 h2{
 	color: #948D8B;

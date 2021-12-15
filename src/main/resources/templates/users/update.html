@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update profile</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<h2>Update</h2>
+<form action="#" th:action="@{/users/update}"
+      th:object="${users}" method="post">
+    <table>
+        <tr>
+            <td><label>ID Card</label></td>
+            <td><input type="text" th:field="*{id}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>Balance</label></td>
+            <td><input type="text" th:field="*{balance}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td><label>Credit card</label></td>
+            <td><input type="text" th:field="*{credit_card}" maxlength="16"/></td>
+            <td th:if="${#fields.hasErrors('credit_card')}" th:errors="*{credit_card}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Age</label></td>
+            <td><input type="number" th:field="*{age}"/></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error"></td>
+        </tr>
+        <tr>
+            <td><label>Email</label></td>
+            <td><input type="text" th:field="*{email}" placeholder="...@..."/></td>
+        </tr>
+        <tr>
+            <td><label>Name</label></td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td><label>Password</label></td>
+            <td><input type="text" th:field="*{password}" required/></td>
+        </tr>
+        <tr>
+            <td><label>Phone</label></td>
+            <td><input type="text" th:field="*{phone}"/></td>
+        </tr>
+    </table>
+    <a href="add"><button type="submit" class="btn btn-success">Modifica un Ciudadano</button></a>
+    <a href="/users/profile"><button type="button" class="btn btn-secondary">Return</button></a>
+
+</form>
+</body>
+</html>

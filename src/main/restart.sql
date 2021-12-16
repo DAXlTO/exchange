@@ -24,6 +24,7 @@ CONSTRAINT ca_users FOREIGN KEY(idUser) REFERENCES Users(id) ON DELETE RESTRICT 
 CREATE TABLE Offers(
     idOffer         INTEGER,
     quantity        INTEGER,
+    price           FLOAT,
     dateOffer       DATE NOT NULL,
     idUser          VARCHAR(9),
 

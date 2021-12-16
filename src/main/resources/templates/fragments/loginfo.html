@@ -17,8 +17,9 @@
       <center><span th:text="*{user.name}"></span></center>
       <ul>
         <li><center><a th:href="@{/users/profile/{id}(id=${user.id})}">My Profile</a></center>
-        <li><center><a href="#">Buy</a></center>
-        <li><center><a href="#">Sell</a></center>
+        <li><center><a th:href="@{/users/balance/{id}(id=${user.id})}">Add funds</a></center>
+        <li><center><a th:href="@{/users/buy/{nif}(nif=${user.id})}">Buy</a></center>
+        <li><center><a th:href="@{/users/sell/{nif}(nif=${user.id})}">Sell</a></center>
         <li><center><a href="/logout" th:href="@{/logout}">Log Out</a></center></li>
       </ul>
     </div>

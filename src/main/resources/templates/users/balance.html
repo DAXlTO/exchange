@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add funds</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<h2>Add funds</h2>
+<form action="#" th:action="@{/users/balance}"
+      th:object="${users}" method="post">
+    <div hidden>
+        <input type="text" th:field="*{id}" readonly="readonly"/>
+        <input type="number" th:field="*{age}" readonly="readonly"/>
+    </div>
+    <table>
+
+        <tr>
+            <td><label>Credit card</label></td>
+            <td><input type="text" th:field="*{credit_card}" readonly="readonly"/></td>
+        </tr>
+
+        <tr>
+            <td><label>Carholder name</label></td>
+            <td><input type="text" required/></td>
+        </tr>
+        <tr>
+            <td><label>Valid thru</label></td>
+            <td><input type="date" required/></td>
+        </tr>
+        <tr>
+            <td><label>CVV</label></td>
+            <td><input type="password" required/></td>
+        </tr>
+
+        <tr>
+            <td><label>Amount to add</label></td>
+            <td><input type="text" th:field="*{balance}"/></td>
+        </tr>
+
+
+
+    </table>
+    <a href="add"><button type="submit" class="btn btn-success">Modifica un Ciudadano</button></a>
+    <a th:href="@{/users/profile/{id}(id=${users.id})}"><button type="button" class="btn btn-warning">Return</button></a>
+
+
+</form>
+</body>
+</html>

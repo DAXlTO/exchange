@@ -6,13 +6,14 @@ public class Offers {
 
     int idOffer;
     int quantity;
+    float price;
     LocalDate dateOffer;
     String idUser;
 
-    public Offers(int idOffer, int quantity, LocalDate dateOffer, String idUser) {
+    public Offers(int idOffer, int quantity, float price, LocalDate dateOffer, String idUser) {
         this.idOffer = idOffer;
-
         this.quantity = quantity;
+        this.price = price;
         this.dateOffer = dateOffer;
         this.idUser = idUser;
     }
@@ -24,6 +25,9 @@ public class Offers {
     }
 
 
+    public float getPrice() {
+        return price;
+    }
 
     public int getQuantity() {
         return quantity;
@@ -41,6 +45,9 @@ public class Offers {
         this.idOffer = idOffer;
     }
 
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;

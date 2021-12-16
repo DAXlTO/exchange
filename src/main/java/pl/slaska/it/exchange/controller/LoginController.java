@@ -72,15 +72,6 @@ public class LoginController {
         return "redirect:/users/home";
     }
 
-    private String adjustTo64(String s) {
-        switch(s.length()) {
-            case 62: return "00" + s;
-            case 63: return "0" + s;
-            case 64: return s;
-            default:
-                throw new IllegalArgumentException("not a valid key: " + s);
-        }
-    }
     /**
      * CERRAR SESION
      */

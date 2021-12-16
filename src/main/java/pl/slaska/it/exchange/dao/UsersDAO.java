@@ -35,6 +35,10 @@ public class UsersDAO {
                 users.getCredit_card(), users.getAge(), users.getEmail(), users.getName(), users.getPassword(), users.getPhone(), users.getId());
     }
 
+    public void updateBalance(Users users){
+        jdbcTemplate.update("UPDATE Users SET balance=? WHERE id=?",users.getBalance()+getUser(users.getId()).getBalance(),users.getId());
+    }
+
     public void deleteUser(String id) {
         jdbcTemplate.update("DELETE FROM Users WHERE id =?", id);
     }

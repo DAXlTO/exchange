@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.slaska.it.exchange.dao.UsersDAO;
 import pl.slaska.it.exchange.dao.WalletDAO;
+import pl.slaska.it.exchange.model.Offers;
 import pl.slaska.it.exchange.model.UserDetails;
 import pl.slaska.it.exchange.model.Users;
 import pl.slaska.it.exchange.model.Wallet;
@@ -60,8 +61,9 @@ public class UsersController {
             model.addAttribute("user", a);
             return "login";
         }
-        model.addAttribute("user", session.getAttribute("user"));
-        model.addAttribute("wallet",session.getAttribute("wallet"));
+        UserDetails user = (UserDetails) session.getAttribute("user");
+        model.addAttribute("user", usersDAO.getUser(user.getId()));
+        model.addAttribute("wallet",walletDAO.getWallet(user.getId()));
         return "users/home";
     }
 
@@ -93,6 +95,22 @@ public class UsersController {
         return "redirect:/users/home";
     }
 
+    @RequestMapping(value="/balance/{id}", method = RequestMethod.GET)
+    public String addBalance(Model model, @PathVariable String id) {
+        model.addAttribute("users", usersDAO.getUser(id) );
+        return "users/balance";
+    }
+
+    @RequestMapping(value="/balance", method = RequestMethod.POST)
+    public String processBalanceSubmit(@ModelAttribute("users") Users users, BindingResult bindingResult) {
+        UsersValidator usersValidator=new UsersValidator();
+        usersValidator.validate(users,bindingResult);
+        if (bindingResult.hasErrors())
+            return "users/balance";
+        usersDAO.updateBalance(users);
+        return "redirect:/users/home";
+    }
+
     @RequestMapping(value="/buy/{id}", method = RequestMethod.GET)
     public String userBuy(Model model, @PathVariable String id) {
         model.addAttribute("users", usersDAO.getUser(id) );
@@ -111,8 +129,11 @@ public class UsersController {
 
     @RequestMapping(value="/sell/{id}", method = RequestMethod.GET)
     public String userSell(Model model, @PathVariable String id) {
-        model.addAttribute("users", usersDAO.getUser(id) );
-        return "users/buy";
+        model.addAttribute("users", usersDAO.getUser(id));
+        model.addAttribute("wallet",walletDAO.getWallet(id));
+        model.addAttribute("offer",new Offers());
+
+        return "users/sell";
     }
 
     @RequestMapping(value="/sell", method = RequestMethod.POST)
@@ -120,7 +141,7 @@ public class UsersController {
         UsersValidator usersValidator=new UsersValidator();
         usersValidator.validate(users,bindingResult);
         if (bindingResult.hasErrors())
-            return "users/buy";
+            return "users/sell";
         usersDAO.updateUser(users);
         return "redirect:/users/home";
     }

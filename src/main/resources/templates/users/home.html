@@ -13,6 +13,23 @@
 <body class="center">
 <div class="user" th:replace="fragments/loginfo" >...</div>
 
-
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>FIAT</th>
+        <th>BTC</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${user.balance}"></td>
+        <td th:text="${wallet.quantity}"></td>
+        <td><a th:href="@{/users/buy/{nif}(nif=${user.id})}"><button type="button" class="btn btn-warning">Buy</button></a></td>
+        <td><a th:href="@{/users/sell/{nif}(nif=${user.id})}"><button type="button" class="btn btn-danger">Sell</button></a></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

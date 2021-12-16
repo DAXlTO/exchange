@@ -16,12 +16,15 @@
 <center>
     <h1>About me</h1>
     <p>ID Card: <span th:text="*{user.id}"></span> <br>
-    Balance: <span th:text="*{user.balance}"></span>$<br>
     Credit card: <span th:text="*{user.credit_card}"></span><br>
     Age: <span th:text="*{user.age}"></span><br>
     E-mail: <span th:text="*{user.email}"></span><br>
     Name: <span th:text="*{user.name}"></span><br>
     Phone: <span th:text="*{user.phone}"></span><br>
+    Wallet: <span th:text="*{wallet.idWallet}"></span><br>
+    Balance: <span th:text="*{user.balance}"></span>$<br>
+
+
     </p>
     <a th:href="@{/users/update/{id}(id=${user.id})}"><button type="button" class="btn btn-warning">Update profile</button></a>
     <a href="/users/home"><button type="button" class="btn btn-secondary">Return</button></a>

@@ -47,7 +47,8 @@
         </tr>
     </table>
     <a href="add"><button type="submit" class="btn btn-success">Modifica un Ciudadano</button></a>
-    <a href="/users/profile"><button type="button" class="btn btn-secondary">Return</button></a>
+    <a th:href="@{/users/profile/{id}(id=${users.id})}"><button type="button" class="btn btn-warning">Return</button></a>
+
 
 </form>
 </body>

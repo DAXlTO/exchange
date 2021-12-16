@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.slaska.it.exchange.dao.UsersDAO;
+import pl.slaska.it.exchange.dao.WalletDAO;
 import pl.slaska.it.exchange.model.UserDetails;
 import pl.slaska.it.exchange.model.Users;
+import pl.slaska.it.exchange.model.Wallet;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,9 +23,13 @@ import javax.servlet.http.HttpSession;
 public class UsersController {
 
     private UsersDAO usersDAO;
+    private WalletDAO walletDAO;
 
     @Autowired
-    public void setUsersDAO(UsersDAO usersDAO){this.usersDAO = usersDAO;}
+    public void setUsersDAO(UsersDAO usersDAO, WalletDAO walletDAO){
+        this.usersDAO = usersDAO;
+        this.walletDAO = walletDAO;
+    }
 
     @RequestMapping(value = "/add")
     public String addUsers(Model model){
@@ -38,7 +44,7 @@ public class UsersController {
         if (bindingResult.hasErrors())
             return "users/add";
         try {
-            usersDAO.addCiudadano(users);
+            usersDAO.addUser(users);
         }
         catch (DuplicateKeyException e ){
             bindingResult.rejectValue("id","id","ID Duplicated");
@@ -55,6 +61,7 @@ public class UsersController {
             return "login";
         }
         model.addAttribute("user", session.getAttribute("user"));
+        model.addAttribute("wallet",session.getAttribute("wallet"));
         return "users/home";
     }
 
@@ -65,13 +72,14 @@ public class UsersController {
             model.addAttribute("user", a);
             return "login";
         }
-        model.addAttribute("user", usersDAO.getCiudadano(id));
+        model.addAttribute("user", usersDAO.getUser(id));
+        model.addAttribute("wallet",walletDAO.getWallet(id));
         return "users/profile";
     }
 
     @RequestMapping(value="/update/{id}", method = RequestMethod.GET)
     public String editCiudadano(Model model, @PathVariable String id) {
-        model.addAttribute("users", usersDAO.getCiudadano(id) );
+        model.addAttribute("users", usersDAO.getUser(id) );
         return "users/update";
     }
 
@@ -81,7 +89,39 @@ public class UsersController {
         usersValidator.validate(ciudadano,bindingResult);
         if (bindingResult.hasErrors())
             return "users/update";
-        usersDAO.updateCiudadano(ciudadano);
+        usersDAO.updateUser(ciudadano);
+        return "redirect:/users/home";
+    }
+
+    @RequestMapping(value="/buy/{id}", method = RequestMethod.GET)
+    public String userBuy(Model model, @PathVariable String id) {
+        model.addAttribute("users", usersDAO.getUser(id) );
+        return "users/buy";
+    }
+
+    @RequestMapping(value="/buy", method = RequestMethod.POST)
+    public String usersBuy(@ModelAttribute("users") Users users, BindingResult bindingResult) {
+        UsersValidator usersValidator=new UsersValidator();
+        usersValidator.validate(users,bindingResult);
+        if (bindingResult.hasErrors())
+            return "users/buy";
+        usersDAO.updateUser(users);
+        return "redirect:/users/home";
+    }
+
+    @RequestMapping(value="/sell/{id}", method = RequestMethod.GET)
+    public String userSell(Model model, @PathVariable String id) {
+        model.addAttribute("users", usersDAO.getUser(id) );
+        return "users/buy";
+    }
+
+    @RequestMapping(value="/sell", method = RequestMethod.POST)
+    public String usersSell(@ModelAttribute("users") Users users, BindingResult bindingResult) {
+        UsersValidator usersValidator=new UsersValidator();
+        usersValidator.validate(users,bindingResult);
+        if (bindingResult.hasErrors())
+            return "users/buy";
+        usersDAO.updateUser(users);
         return "redirect:/users/home";
     }
 

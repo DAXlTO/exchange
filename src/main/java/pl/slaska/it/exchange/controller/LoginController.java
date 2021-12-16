@@ -12,7 +12,9 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import pl.slaska.it.exchange.dao.UsersDAO;
 import pl.slaska.it.exchange.dao.UserDao;
+import pl.slaska.it.exchange.dao.WalletDAO;
 import pl.slaska.it.exchange.model.UserDetails;
+
 
 class UserValidator implements Validator {
     @Override
@@ -34,9 +36,12 @@ public class LoginController {
     @Autowired
     private UserDao userDao;
     private UsersDAO usersDAO;
+    private WalletDAO walletDAO;
 
     @Autowired
-    public void setUsersDAO(UsersDAO usersDAO) { this.usersDAO = usersDAO; }
+    public void setUsersDAO(UsersDAO usersDAO, WalletDAO walletDAO) {
+        this.walletDAO = walletDAO;
+        this.usersDAO = usersDAO; }
 
 
     /**
@@ -63,10 +68,19 @@ public class LoginController {
             return "login";
         }
         session.setAttribute("user", user);
+        session.setAttribute("wallet",walletDAO.getWallet(user.getId()));
         return "redirect:/users/home";
     }
 
-
+    private String adjustTo64(String s) {
+        switch(s.length()) {
+            case 62: return "00" + s;
+            case 63: return "0" + s;
+            case 64: return s;
+            default:
+                throw new IllegalArgumentException("not a valid key: " + s);
+        }
+    }
     /**
      * CERRAR SESION
      */

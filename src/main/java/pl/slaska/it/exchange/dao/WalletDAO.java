@@ -32,19 +32,29 @@ public class WalletDAO {
         jdbcTemplate.update("INSERT INTO Wallet VALUES(?,?,?)", getAddress(),0,users.getId());
     }
 
-    public void updateUser(Users users) {
-        jdbcTemplate.update("UPDATE Users SET credit_card =?, age =?, email =?, name =?, password =?, phone =? WHERE id =?",
-                users.getCredit_card(), users.getAge(), users.getEmail(), users.getName(), users.getPassword(), users.getPhone(), users.getId());
+    public void updateWallet(float quantity, String wallet) {
+        jdbcTemplate.update("UPDATE Wallet SET quantity =? WHERE idWallet =?",
+                quantity,wallet);
     }
 
     public void deleteUser(String id) {
         jdbcTemplate.update("DELETE FROM Users WHERE id =?", id);
     }
 
-    public Wallet getWallet(String id) {
+    public Wallet getWalletByID(String id) {
         try {
             return jdbcTemplate.queryForObject("SELECT * FROM Wallet WHERE idUser =?",
                     new WalletRowMapper(), id);
+        }
+        catch(EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    public Wallet getWallet(String wallet) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM Wallet WHERE idWallet =?",
+                    new WalletRowMapper(), wallet);
         }
         catch(EmptyResultDataAccessException e) {
             return null;

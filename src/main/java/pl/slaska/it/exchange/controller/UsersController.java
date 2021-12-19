@@ -7,15 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.slaska.it.exchange.dao.UsersDAO;
 import pl.slaska.it.exchange.dao.WalletDAO;
-import pl.slaska.it.exchange.model.Offers;
-import pl.slaska.it.exchange.model.UserDetails;
-import pl.slaska.it.exchange.model.Users;
-import pl.slaska.it.exchange.model.Wallet;
+import pl.slaska.it.exchange.model.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -63,25 +59,32 @@ public class UsersController {
         }
         UserDetails user = (UserDetails) session.getAttribute("user");
         model.addAttribute("user", usersDAO.getUser(user.getId()));
-        model.addAttribute("wallet",walletDAO.getWallet(user.getId()));
+        model.addAttribute("wallet",walletDAO.getWalletByID(user.getId()));
         return "users/home";
     }
 
-    @RequestMapping(value = "/profile/{id}")
-    public String profile(HttpSession session, Model model, @PathVariable String id) {
+    @RequestMapping(value = "/profile")
+    public String profile(HttpSession session, Model model) {
         if (session.getAttribute("user") == null) {
             UserDetails a= new UserDetails();
             model.addAttribute("user", a);
             return "login";
         }
-        model.addAttribute("user", usersDAO.getUser(id));
-        model.addAttribute("wallet",walletDAO.getWallet(id));
+        UserDetails user = (UserDetails) session.getAttribute("user");
+        model.addAttribute("user", usersDAO.getUser(user.getId()));
+        model.addAttribute("wallet",walletDAO.getWalletByID(user.getId()));
         return "users/profile";
     }
 
-    @RequestMapping(value="/update/{id}", method = RequestMethod.GET)
-    public String editCiudadano(Model model, @PathVariable String id) {
-        model.addAttribute("users", usersDAO.getUser(id) );
+    @RequestMapping(value="/update", method = RequestMethod.GET)
+    public String editCiudadano(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null) {
+            UserDetails a= new UserDetails();
+            model.addAttribute("user", a);
+            return "login";
+        }
+        UserDetails user = (UserDetails) session.getAttribute("user");
+        model.addAttribute("user", usersDAO.getUser(user.getId()));
         return "users/update";
     }
 
@@ -95,9 +98,15 @@ public class UsersController {
         return "redirect:/users/home";
     }
 
-    @RequestMapping(value="/balance/{id}", method = RequestMethod.GET)
-    public String addBalance(Model model, @PathVariable String id) {
-        model.addAttribute("users", usersDAO.getUser(id) );
+    @RequestMapping(value="/balance", method = RequestMethod.GET)
+    public String addBalance(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null) {
+            UserDetails a= new UserDetails();
+            model.addAttribute("user", a);
+            return "login";
+        }
+        UserDetails user = (UserDetails) session.getAttribute("user");
+        model.addAttribute("user", usersDAO.getUser(user.getId()));
         return "users/balance";
     }
 
@@ -111,9 +120,15 @@ public class UsersController {
         return "redirect:/users/home";
     }
 
-    @RequestMapping(value="/buy/{id}", method = RequestMethod.GET)
-    public String userBuy(Model model, @PathVariable String id) {
-        model.addAttribute("users", usersDAO.getUser(id) );
+    @RequestMapping(value="/buy", method = RequestMethod.GET)
+    public String userBuy(Model model, HttpSession session) {
+        if (session.getAttribute("user") == null) {
+            UserDetails a= new UserDetails();
+            model.addAttribute("user", a);
+            return "login";
+        }
+        UserDetails user = (UserDetails) session.getAttribute("user");
+        model.addAttribute("user", usersDAO.getUser(user.getId()) );
         return "users/buy";
     }
 
@@ -127,23 +142,5 @@ public class UsersController {
         return "redirect:/users/home";
     }
 
-    @RequestMapping(value="/sell/{id}", method = RequestMethod.GET)
-    public String userSell(Model model, @PathVariable String id) {
-        model.addAttribute("users", usersDAO.getUser(id));
-        model.addAttribute("wallet",walletDAO.getWallet(id));
-        model.addAttribute("offer",new Offers());
-
-        return "users/sell";
-    }
-
-    @RequestMapping(value="/sell", method = RequestMethod.POST)
-    public String usersSell(@ModelAttribute("users") Users users, BindingResult bindingResult) {
-        UsersValidator usersValidator=new UsersValidator();
-        usersValidator.validate(users,bindingResult);
-        if (bindingResult.hasErrors())
-            return "users/sell";
-        usersDAO.updateUser(users);
-        return "redirect:/users/home";
-    }
 
 }

@@ -8,8 +8,7 @@
 </head>
 <body>
 <h2>Update</h2>
-<form action="#" th:action="@{/users/update}"
-      th:object="${users}" method="post">
+<form action="#" th:action="@{/users/update}" th:object="${user}" method="post">
     <table>
         <tr>
             <td><label>ID Card</label></td>
@@ -47,7 +46,7 @@
         </tr>
     </table>
     <a href="add"><button type="submit" class="btn btn-success">Modifica un Ciudadano</button></a>
-    <a th:href="@{/users/profile/{id}(id=${users.id})}"><button type="button" class="btn btn-warning">Return</button></a>
+    <a th:href="@{/users/profile}"><button type="button" class="btn btn-warning">Return</button></a>
 
 
 </form>

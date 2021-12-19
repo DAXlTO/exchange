@@ -3,10 +3,10 @@ package pl.slaska.it.exchange.model;
 public class Wallet {
 
     String idWallet;
-    int quantity;
+    float quantity;
     String idUser;
 
-    public Wallet(String idWallet, int quantity, String idUser) {
+    public Wallet(String idWallet, float quantity, String idUser) {
         this.idWallet = idWallet;
         this.quantity = quantity;
         this.idUser = idUser;
@@ -18,7 +18,7 @@ public class Wallet {
         return idWallet;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
@@ -30,7 +30,7 @@ public class Wallet {
         this.idWallet = idWallet;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 

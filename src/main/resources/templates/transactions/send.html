@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Sell</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/estilos.css" th:href="@{/css/estilos.css}"/>
+  <link rel="stylesheet" type="text/css" href="/css/menu.css" th:href="@{/css/menu.css}"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="user" th:replace="fragments/loginfo" >...</div>
+
+
+<h2>Sell</h2>
+<div th:replace="fragments/btcinfo" >...</div>
+<form action="#" th:action="@{/transactions/send}" th:object="${transaction}" method="post">
+  <table>
+    <tr>
+      <td><label>Quantity</label></td>
+      <td><input id="c"  type="number" onchange='add();'/></td>
+    </tr>
+
+    <tr>
+      <td><label>Receiver's wallet</label></td>
+      <td><input name="walletBuyer" type="text"/></td>
+      <td th:if="${#fields.hasErrors('walletBuyer')}" th:errors="*{walletBuyer}" class="error"></td>
+    </tr>
+
+    <tr>
+      <td><label>Fee:</label></td>
+      <td><input type="number" id='fee' readonly="readonly"></td>
+    </tr>
+
+    <tr>
+      <td><label>Total:</label></td>
+      <td><input type="number" th:field="*{quantity}" id='quantity' readonly="readonly"></td>
+      <td th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="error"></td>
+    </tr>
+
+
+  </table>
+  <a href="add"><button type="submit" class="btn btn-success">Send</button></a>
+  <a th:href="@{/users/profile}"><button type="button" class="btn btn-warning">Return</button></a>
+
+
+  <script type="text/javascript">
+    function add(){
+      document.getElementById('fee').value = document.getElementById('c').value * 0.01;
+      total();
+    }
+    function total(){
+      document.getElementById('quantity').value = parseFloat(document.getElementById('c').value) + document.getElementById('c').value * 0.01;
+    }
+</script>
+
+</form>
+</body>
+</html>

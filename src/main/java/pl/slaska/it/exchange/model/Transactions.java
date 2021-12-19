@@ -7,10 +7,10 @@ public class Transactions {
     int idTransactions;
     String walletBuyer;
     String walletSeller;
-    int quantity;
+    float quantity;
     LocalDate trans_date;
 
-    public Transactions(int idTransactions, String walletBuyer, String walletSeller, int quantity, LocalDate trans_date) {
+    public Transactions(int idTransactions, String walletBuyer, String walletSeller, float quantity, LocalDate trans_date) {
         this.idTransactions = idTransactions;
         this.walletBuyer = walletBuyer;
         this.walletSeller = walletSeller;
@@ -32,7 +32,7 @@ public class Transactions {
         return walletSeller;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
@@ -52,7 +52,7 @@ public class Transactions {
         this.walletSeller = walletSeller;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 

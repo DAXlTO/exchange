@@ -15,7 +15,7 @@ public final class TransactionsRowMapper implements RowMapper<Transactions> {
         transactions.setIdTransactions(rs.getInt("idTransactions"));
         transactions.setWalletBuyer(rs.getString("walletBuyer"));
         transactions.setWalletSeller(rs.getString("walletSeller"));
-        transactions.setQuantity(rs.getInt("quantity"));
+        transactions.setQuantity(rs.getFloat("quantity"));
         transactions.setTrans_date(rs.getObject("trans_date", LocalDate.class));
         return transactions;
     }

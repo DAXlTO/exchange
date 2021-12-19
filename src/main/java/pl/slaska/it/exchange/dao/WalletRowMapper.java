@@ -10,7 +10,7 @@ public final class WalletRowMapper implements RowMapper<Wallet> {
 
         Wallet wallet = new Wallet();
         wallet.setIdWallet(rs.getString("idWallet"));
-        wallet.setQuantity(rs.getInt("quantity"));
+        wallet.setQuantity(rs.getFloat("quantity"));
         wallet.setIdUser(rs.getString("idUser"));
         return wallet;
     }

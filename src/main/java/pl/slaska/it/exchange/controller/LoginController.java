@@ -55,8 +55,7 @@ public class LoginController {
     }
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String checkLogin(@ModelAttribute("users") UserDetails user,
-                             BindingResult bindingResult, HttpSession session) {
+    public String checkLogin(@ModelAttribute("users") UserDetails user, BindingResult bindingResult, HttpSession session) {
         UserValidator userValidator = new UserValidator();
         userValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -68,7 +67,6 @@ public class LoginController {
             return "login";
         }
         session.setAttribute("user", user);
-        session.setAttribute("wallet",walletDAO.getWallet(user.getId()));
         return "redirect:/users/home";
     }
 

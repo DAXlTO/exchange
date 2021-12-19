@@ -9,7 +9,7 @@
 <body>
 <h2>Add funds</h2>
 <form action="#" th:action="@{/users/balance}"
-      th:object="${users}" method="post">
+      th:object="${user}" method="post">
     <div hidden>
         <input type="text" th:field="*{id}" readonly="readonly"/>
         <input type="number" th:field="*{age}" readonly="readonly"/>
@@ -43,7 +43,7 @@
 
     </table>
     <a href="add"><button type="submit" class="btn btn-success">Modifica un Ciudadano</button></a>
-    <a th:href="@{/users/profile/{id}(id=${users.id})}"><button type="button" class="btn btn-warning">Return</button></a>
+    <a th:href="@{/users/profile}"><button type="button" class="btn btn-warning">Return</button></a>
 
 
 </form>

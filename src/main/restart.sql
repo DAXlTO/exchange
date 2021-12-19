@@ -13,7 +13,7 @@ CONSTRAINT cp_users PRIMARY KEY(id)
 
 CREATE TABLE Wallet(
     idWallet        VARCHAR(40),
-    quantity        INTEGER,
+    quantity        FLOAT,
     idUser          VARCHAR(9),
 
 CONSTRAINT cp_wallet PRIMARY KEY(idWallet),

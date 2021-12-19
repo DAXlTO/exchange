@@ -23,12 +23,13 @@
     Phone: <span th:text="*{user.phone}"></span><br>
     Wallet: <span th:text="*{wallet.idWallet}"></span><br>
     Balance: <span th:text="*{user.balance}"></span>$<br>
+    BTC:    <span th:text="*{wallet.quantity}"></span>
 
 
     </p>
-    <a th:href="@{/users/update/{id}(id=${user.id})}"><button type="button" class="btn btn-warning">Update profile</button></a>
+    <a th:href="@{/users/update}"><button type="button" class="btn btn-warning">Update profile</button></a>
     <a href="/users/home"><button type="button" class="btn btn-secondary">Return</button></a>
-    <a th:href="@{/users/balance/{id}(id=${user.id})}"><button type="button" class="btn btn-primary">Add funds</button></a>
+    <a th:href="@{/users/balance}"><button type="button" class="btn btn-primary">Add funds</button></a>
 
 </center>
 </body>

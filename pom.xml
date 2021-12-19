@@ -56,14 +56,6 @@
 		</dependency>
 	</dependencies>
 
-	<dependency>
-		<dependency>
-			<groupId>org.bitcoinj</groupId>
-			<artifactId>bitcoinj-core</artifactId>
-			<version>0.16.1</version>
-			<scope>compile</scope>
-		</dependency>
-	</dependency>
 	<build>
 		<plugins>
 			<plugin>

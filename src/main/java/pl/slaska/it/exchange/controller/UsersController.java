@@ -120,27 +120,7 @@ public class UsersController {
         return "redirect:/users/home";
     }
 
-    @RequestMapping(value="/buy", method = RequestMethod.GET)
-    public String userBuy(Model model, HttpSession session) {
-        if (session.getAttribute("user") == null) {
-            UserDetails a= new UserDetails();
-            model.addAttribute("user", a);
-            return "login";
-        }
-        UserDetails user = (UserDetails) session.getAttribute("user");
-        model.addAttribute("user", usersDAO.getUser(user.getId()) );
-        return "users/buy";
-    }
 
-    @RequestMapping(value="/buy", method = RequestMethod.POST)
-    public String usersBuy(@ModelAttribute("users") Users users, BindingResult bindingResult) {
-        UsersValidator usersValidator=new UsersValidator();
-        usersValidator.validate(users,bindingResult);
-        if (bindingResult.hasErrors())
-            return "users/buy";
-        usersDAO.updateUser(users);
-        return "redirect:/users/home";
-    }
 
 
 }

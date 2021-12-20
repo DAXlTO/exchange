@@ -18,17 +18,17 @@
 <h2>Sell</h2>
 <div th:replace="fragments/btcinfo" >...</div>
 
-<form action="#" th:action="@{/users/sell}" th:object="${offer}" method="post">
+<form action="#" th:action="@{/offers/sell}" th:object="${offer}" method="post">
     <table>
-
         <tr>
             <td><label>Quantity</label></td>
-            <td><input id="c"  type="number" th:field="*{quantity}" onchange='add();' required/></td>
+            <td><input id="c"  type="number" onchange='add();' th:field="*{quantity}" required/></td>
+            <td th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="error"></td>
         </tr>
 
         <tr>
-            <td><label>Price per bitcoin ($):</label></td>
-            <td><input id="price" th:field="*{price}" type="number"  onchange='total();' required/></td>
+            <td><label>Price</label></td>
+            <td><input id="price"  type="number" onchange='total();' th:field="*{price}"/></td>
         </tr>
 
         <tr>
@@ -37,8 +37,8 @@
         </tr>
 
         <tr>
-            <td><label>You get:</label></td>
-            <td><input type="number" id='get' readonly="readonly"></td>
+            <td><label>Total:</label></td>
+            <td><input type="number"  id='youget' th:field="*{price}" readonly="readonly"></td>
         </tr>
 
 
@@ -48,15 +48,14 @@
 
 
     <script type="text/javascript">
-        function add(){
-          document.getElementById('fee').value = document.getElementById('c').value * 0.005;
-          total();
-        }
+    function add(){
+      document.getElementById('fee').value = document.getElementById('c').value * 0.005;
+    }
+    function total(){
+      document.getElementById('youget').value = parseFloat(document.getElementById('c').value) * document.getElementById('price').value - document.getElementById('fee').value * document.getElementById('price').value;
+    }
 
-        function total(){
-          document.getElementById('get').value = (document.getElementById('c').value * document.getElementById('price').value) - ;
-        }
-    </script>
+</script>
 
 </form>
 </body>

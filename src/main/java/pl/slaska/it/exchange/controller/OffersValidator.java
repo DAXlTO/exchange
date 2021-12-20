@@ -17,7 +17,7 @@ public class OffersValidator implements Validator {
 
     public void validate1(float have, Object o, Errors errors) {
         Offers offers = (Offers) o;
-        if(offers.getQuantity()>have)
+        if(offers.getQuantity()+offers.getQuantity()*0.005 >have)
             errors.rejectValue("quantity","quantity", "You don't have enough BTC!!!");
     }
 }

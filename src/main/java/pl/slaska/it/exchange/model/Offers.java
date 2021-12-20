@@ -5,15 +5,17 @@ import java.time.LocalDate;
 public class Offers {
 
     int idOffer;
-    int quantity;
+    float quantity;
     float price;
+    float total;
     LocalDate dateOffer;
     String idUser;
 
-    public Offers(int idOffer, int quantity, float price, LocalDate dateOffer, String idUser) {
+    public Offers(int idOffer, float quantity, float price, float total ,LocalDate dateOffer, String idUser) {
         this.idOffer = idOffer;
         this.quantity = quantity;
         this.price = price;
+        this.total = total;
         this.dateOffer = dateOffer;
         this.idUser = idUser;
     }
@@ -24,12 +26,15 @@ public class Offers {
         return idOffer;
     }
 
+    public float getTotal() {
+        return total;
+    }
 
     public float getPrice() {
         return price;
     }
 
-    public int getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
@@ -45,11 +50,15 @@ public class Offers {
         this.idOffer = idOffer;
     }
 
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
     public void setPrice(float price) {
         this.price = price;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 

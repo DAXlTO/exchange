@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Buy</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
 <body>
+<h1>Buy</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Quantity (BTC)</th>
+        <th>Price ($)</th>
+        <th>Total< ($)</th>
+        <th></th>
 
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="offer: ${offers}">
+        <td th:text="${offer.quantity}"></td>
+        <td th:text="${offer.price}"></td>
+        <td th:text="${offer.total}"></td>
+        <td><a th:href="@{/offers/buy}"><button type="button" class="btn btn-warning">Buy</button></a>
+        </td>
+
+    </tbody>
+</table>
+<a href="/users/home"><button type="button" class="btn btn-outline-secondary">Main menu</button></a>
 </body>
 </html>

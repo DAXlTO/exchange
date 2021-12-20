@@ -26,8 +26,8 @@
     <tr>
         <td th:text="${user.balance}">$</td>
         <td th:text="${wallet.quantity}"></td>
-        <td><a th:href="@{/users/buy}"><button type="button" class="btn btn-warning">Buy</button></a></td>
-        <td><a th:href="@{/users/sell}"><button type="button" class="btn btn-danger">Sell</button></a></td>
+        <td><a th:href="@{/offers/buy}"><button type="button" class="btn btn-warning">Buy</button></a></td>
+        <td><a th:href="@{/offers/sell}"><button type="button" class="btn btn-danger">Sell</button></a></td>
         <td><a th:href="@{/transactions/send}"><button type="button" class="btn btn-danger">Send BTC</button></a></td>
 
     </tr>

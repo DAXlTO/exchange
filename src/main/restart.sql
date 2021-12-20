@@ -1,3 +1,9 @@
+DROP TABLE offers;
+DROP TABLE transactions;
+DROP TABLE wallet;
+DROP TABLE Users;
+
+
 CREATE TABLE Users(
 	id		VARCHAR(9),
 	balance		INTEGER,
@@ -23,8 +29,9 @@ CONSTRAINT ca_users FOREIGN KEY(idUser) REFERENCES Users(id) ON DELETE RESTRICT 
 
 CREATE TABLE Offers(
     idOffer         INTEGER,
-    quantity        INTEGER,
+    quantity        FLOAT,
     price           FLOAT,
+    total           FLOAT,
     dateOffer       DATE NOT NULL,
     idUser          VARCHAR(9),
 

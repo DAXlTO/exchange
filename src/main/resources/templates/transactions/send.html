@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Sell</title>
+  <title>Send</title>
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
   <link rel="stylesheet" type="text/css" href="/css/estilos.css" th:href="@{/css/estilos.css}"/>
@@ -15,7 +15,7 @@
 <div class="user" th:replace="fragments/loginfo" >...</div>
 
 
-<h2>Sell</h2>
+<h2>Send</h2>
 <div th:replace="fragments/btcinfo" >...</div>
 <form action="#" th:action="@{/transactions/send}" th:object="${transaction}" method="post">
   <table>

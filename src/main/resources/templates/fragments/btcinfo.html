@@ -3,8 +3,5 @@
         No autenticat <a href="/login" th:href="@{/login}">Entrar</a>
     </p>
     <p th:unless="*{wallet == null}">
-
-       You have:  <span th:text="*{wallet.quantity}">BTC</span>
-
-
+        You have:  <span th:text="*{wallet.quantity}"></span> BTC
 </div>

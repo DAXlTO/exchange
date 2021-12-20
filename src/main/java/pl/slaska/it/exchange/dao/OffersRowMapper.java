@@ -11,8 +11,9 @@ public final class OffersRowMapper implements RowMapper<Offers> {
 
         Offers offers = new Offers();
         offers.setIdOffer(rs.getInt("idOffer"));
-        offers.setQuantity(rs.getInt("quantity"));
+        offers.setQuantity(rs.getFloat("quantity"));
         offers.setPrice(rs.getFloat("price"));
+        offers.setTotal(rs.getFloat("total"));
         offers.setDateOffer(rs.getObject("dateOffer", LocalDate.class));
         offers.setIdUser(rs.getString("idUser"));
         return offers;

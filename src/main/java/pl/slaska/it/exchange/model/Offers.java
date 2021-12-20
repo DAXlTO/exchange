@@ -7,14 +7,16 @@ public class Offers {
     int idOffer;
     float quantity;
     float price;
+    float fee;
     float total;
     LocalDate dateOffer;
     String idUser;
 
-    public Offers(int idOffer, float quantity, float price, float total ,LocalDate dateOffer, String idUser) {
+    public Offers(int idOffer, float quantity, float price, float fee ,float total ,LocalDate dateOffer, String idUser) {
         this.idOffer = idOffer;
         this.quantity = quantity;
         this.price = price;
+        this.fee = fee;
         this.total = total;
         this.dateOffer = dateOffer;
         this.idUser = idUser;
@@ -28,6 +30,10 @@ public class Offers {
 
     public float getTotal() {
         return total;
+    }
+
+    public float getFee() {
+        return fee;
     }
 
     public float getPrice() {
@@ -52,6 +58,10 @@ public class Offers {
 
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    public void setFee(float fee) {
+        this.fee = fee;
     }
 
     public void setPrice(float price) {

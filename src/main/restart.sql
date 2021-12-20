@@ -31,6 +31,7 @@ CREATE TABLE Offers(
     idOffer         INTEGER,
     quantity        FLOAT,
     price           FLOAT,
+    fee             FLOAT,
     total           FLOAT,
     dateOffer       DATE NOT NULL,
     idUser          VARCHAR(9),

@@ -22,8 +22,8 @@ public class OffersDAO {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void addOffer(float quantity, float price, float total ,String idUser){
-        jdbcTemplate.update("INSERT INTO Offers VALUES(?,?,?,?,?,?)", obtenerID(),quantity,price, total, LocalDate.now(),idUser);
+    public void addOffer(float quantity, float price, float fee ,float total ,String idUser){
+        jdbcTemplate.update("INSERT INTO Offers VALUES(?,?,?,?,?,?,?)", obtenerID(),quantity,price, fee ,total, LocalDate.now(),idUser);
     }
 
     public int obtenerID(){
@@ -34,6 +34,18 @@ public class OffersDAO {
 
         int r = Integer.parseInt(consulta) + 1;
         return r;
+    }
+
+    public Offers getOffer(int idOffer){
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM Offers WHERE idOffer = ?", new OffersRowMapper() ,idOffer);
+        }catch(EmptyResultDataAccessException e) {
+            return new Offers();
+        }
+    }
+
+    public void deleteOffer(int idOffer){
+            jdbcTemplate.update("DELETE FROM Offers WHERE idOffer =?", idOffer);
     }
 
     public List<Offers> getOffers(String id){

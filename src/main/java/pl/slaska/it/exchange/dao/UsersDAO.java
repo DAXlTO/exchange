@@ -39,6 +39,11 @@ public class UsersDAO {
         jdbcTemplate.update("UPDATE Users SET balance=? WHERE id=?",users.getBalance()+getUser(users.getId()).getBalance(),users.getId());
     }
 
+    public void comprar(String idUser, float balance){
+        jdbcTemplate.update("UPDATE Users SET balance=? WHERE id=?",balance,idUser);
+
+    }
+
     public void deleteUser(String id) {
         jdbcTemplate.update("DELETE FROM Users WHERE id =?", id);
     }

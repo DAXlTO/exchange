@@ -26,7 +26,7 @@ class UserValidator implements Validator {
         UserDetails userDetails = (UserDetails)obj;
         if (userDetails.getPassword().trim().equals(""))
             errors.rejectValue("password", "obligatori",
-                    "El campo contraseña no puede estar vacio");
+                    "The password cannot be empty");
     }
 }
 
@@ -63,7 +63,7 @@ public class LoginController {
         }
         user = userDao.loadUserByUsername(user.getEmail(), user.getPassword(), usersDAO);
         if (user == null) {
-            bindingResult.rejectValue("password", "password", "Contraseña incorrecta");
+            bindingResult.rejectValue("password", "invalid", "Incorrect password");
             return "login";
         }
         session.setAttribute("user", user);

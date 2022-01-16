@@ -14,7 +14,7 @@
 
 <div class="user" th:replace="fragments/loginfo" >...</div>
 
-
+<center>
 <h2>Send</h2>
 <div th:replace="fragments/btcinfo" >...</div>
 <form action="#" th:action="@{/transactions/send}" th:object="${transaction}" method="post">
@@ -58,5 +58,6 @@
 </script>
 
 </form>
+</center>
 </body>
 </html>

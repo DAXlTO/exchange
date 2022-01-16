@@ -33,6 +33,7 @@
             <tr>
                 <td><label>Email</label></td>
                 <td><input type="text" th:field="*{email}" placeholder="...@..."/></td>
+                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></td>
             </tr>
             <tr>
                 <td><label>Name</label></td>

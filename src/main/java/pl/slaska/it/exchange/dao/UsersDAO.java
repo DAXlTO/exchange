@@ -57,6 +57,14 @@ public class UsersDAO {
             return null;
         }
     }
+    public String getUserByEmail(String email) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM Users WHERE email =?",
+                    new UsersRowMapper(), email).getEmail();
+        } catch (Exception ex){
+            return "";
+        }
+    }
 
     public List<Users> getUsers(){
         try{

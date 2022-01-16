@@ -14,8 +14,6 @@ import pl.slaska.it.exchange.dao.UsersDAO;
 import pl.slaska.it.exchange.dao.WalletDAO;
 import pl.slaska.it.exchange.model.Offers;
 import pl.slaska.it.exchange.model.UserDetails;
-import pl.slaska.it.exchange.model.Users;
-
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -44,6 +42,7 @@ public class OffersController {
         }
         UserDetails user = (UserDetails) session.getAttribute("user");
         model.addAttribute("offers", offersDAO.getOffers(user.getId()));
+        model.addAttribute("user", usersDAO.getUser(user.getId()));
         return "offers/buy";
     }
 
@@ -51,13 +50,13 @@ public class OffersController {
     public String usersBuy(@PathVariable("idOffer") int idOffer,  Model model, HttpSession session) {
         UserDetails user = (UserDetails) session.getAttribute("user");
         Offers oferta = offersDAO.getOffer(idOffer);
-        if(user.getBalance()< oferta.getTotal()) {
+        if(usersDAO.getUser(user.getId()).getBalance() < oferta.getTotal()) {
             System.out.println("salio mal");
             return "redirect:/offers/buy";
         }
 
         usersDAO.comprar(oferta.getIdUser(),usersDAO.getUser(oferta.getIdUser()).getBalance() + oferta.getTotal()-oferta.getFee());
-        usersDAO.comprar(user.getId(),user.getBalance()-oferta.getTotal());
+        usersDAO.comprar(user.getId(),usersDAO.getUser(user.getId()).getBalance()-oferta.getTotal());
         walletDAO.updateWallet(walletDAO.getWalletByID(user.getId()).getQuantity() + oferta.getQuantity(),walletDAO.getWalletByID(user.getId()).getIdWallet());
         walletDAO.updateWallet(walletDAO.getWalletByID(oferta.getIdUser()).getQuantity() - oferta.getQuantity(),walletDAO.getWalletByID(oferta.getIdUser()).getIdWallet());
         offersDAO.deleteOffer(idOffer);

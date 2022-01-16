@@ -7,6 +7,7 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
 </head>
 <body>
+<center>
 <h2>Add funds</h2>
 <form action="#" th:action="@{/users/balance}"
       th:object="${user}" method="post">
@@ -42,10 +43,11 @@
 
 
     </table>
-    <a href="add"><button type="submit" class="btn btn-success">Modifica un Ciudadano</button></a>
+    <a href="add"><button type="submit" class="btn btn-success">Add funds</button></a>
     <a th:href="@{/users/profile}"><button type="button" class="btn btn-warning">Return</button></a>
 
 
 </form>
+</center>
 </body>
 </html>

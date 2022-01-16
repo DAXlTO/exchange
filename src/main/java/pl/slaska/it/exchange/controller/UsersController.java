@@ -1,6 +1,5 @@
 package pl.slaska.it.exchange.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.slaska.it.exchange.dao.UsersDAO;
 import pl.slaska.it.exchange.dao.WalletDAO;
 import pl.slaska.it.exchange.model.*;
-
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -45,7 +43,7 @@ public class UsersController {
         }
         catch (DuplicateKeyException e ){
             bindingResult.rejectValue("id","id","ID Duplicated");
-                return "users/add";
+            return "users/add";
         }
         return "/login";
     }
@@ -111,12 +109,17 @@ public class UsersController {
     }
 
     @RequestMapping(value="/balance", method = RequestMethod.POST)
-    public String processBalanceSubmit(@ModelAttribute("users") Users users, BindingResult bindingResult) {
+    public String processBalanceSubmit(@ModelAttribute("users") Users users, BindingResult bindingResult, HttpSession session, Model model) {
         UsersValidator usersValidator=new UsersValidator();
         usersValidator.validate(users,bindingResult);
         if (bindingResult.hasErrors())
             return "users/balance";
         usersDAO.updateBalance(users);
+        if (session.getAttribute("user") == null) {
+            UserDetails a= new UserDetails();
+            model.addAttribute("user", a);
+            return "login";
+        }
         return "redirect:/users/home";
     }
 

@@ -5,8 +5,12 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/menu.css" th:href="@{/css/menu.css}"/>
+
 </head>
 <body>
+<div class="user" th:replace="fragments/loginfo" >...</div>
+
 <center>
 <h2>Add funds</h2>
 <form action="#" th:action="@{/users/balance}"

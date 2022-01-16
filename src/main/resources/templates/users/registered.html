@@ -1,0 +1,47 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        img.tickVerde{
+  /* vertical-align: middle; */
+  margin-top: 100px;
+  width: 300px;
+  height: 300px;
+}
+    </style>
+</head>
+<body>
+
+<center>
+<div><img src="/images/ticket.png" class="tickVerde"></img></div>
+<h1>Registration completed succesfuly!!</h1>
+
+
+
+
+
+<script type="text/javascript">
+        var contador = 8;
+        var redirecciona = "/login";
+
+        function temporizador(){
+            var mensaje = document.getElementById("mensaje");
+            if(contador > 0){
+                contador--;
+                mensaje.innerHTML = "<center>Redirecting in "+contador+" seconds.</center>";
+                setTimeout("temporizador()", 1000);
+            }else{
+                window.location.href = redirecciona;
+            }
+        }
+    </script>
+
+<br>
+<span id="mensaje">
+        <script type="text/javascript">temporizador();</script>
+    </span>
+
+</center>
+
+</body>
+</html>

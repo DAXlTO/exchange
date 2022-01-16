@@ -3,10 +3,14 @@
 <head>
     <title>Update profile</title>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/menu.css" th:href="@{/css/menu.css}"/>
+
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
 </head>
 <body>
+<div class="user" th:replace="fragments/loginfo" >...</div>
+
 <center>
 <h2>Update</h2>
 <form action="#" th:action="@{/users/update}" th:object="${user}" method="post">

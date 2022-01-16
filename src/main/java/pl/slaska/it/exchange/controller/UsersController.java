@@ -45,7 +45,7 @@ public class UsersController {
             bindingResult.rejectValue("id","id","ID Duplicated");
             return "users/add";
         }
-        return "/login";
+        return "/users/registered";
     }
 
     @RequestMapping(value = "/home")

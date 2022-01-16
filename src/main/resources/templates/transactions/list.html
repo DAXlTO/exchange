@@ -4,8 +4,12 @@
     <title>Transactions</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/menu.css" th:href="@{/css/menu.css}"/>
+
 </head>
 <body>
+<div class="user" th:replace="fragments/loginfo" >...</div>
+
 <h1>List of Transactions</h1>
 <table class="table table-striped">
     <thead>

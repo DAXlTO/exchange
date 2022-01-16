@@ -9,13 +9,21 @@
 .gif{
   width: 75px; height: 75px;
 }
-body{
-	background-image: url('/images/fondo1.png');
+.init{
+    background: url('/images/bitcoin.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
 .center {
      text-align: center;
 }
 
+h3{
+    color: #ffffff;
+}
 img {
      width: 40px;
      height: 30px;
